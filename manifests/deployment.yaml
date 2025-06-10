@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: job-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: job-server
+  template:
+    metadata:
+      labels:
+        app: job-server
+    spec:
+      serviceAccountName: job-server-sa
+      containers:
+        - name: job-server
+          image: heheh13/job-server:latest
+          imagePullPolicy: Always
+          env:
+            - name: AGENT_IMAGE
+              value: "heheh13/job-agent:latest"
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: job-server
+spec:
+  selector:
+    app: job-server
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
