@@ -4,6 +4,7 @@ APP_NAME=job-server
 AGENT_APP_NAME=agent-job
 IMAGE_TAG=latest
 IMAGE_REPO=heheh13/$(APP_NAME)
+AGENT_IMAGE_REPO=heheh13/$(AGENT_APP_NAME)
 
 # Build the Go binary
 build:
@@ -25,8 +26,8 @@ build-push-server:
 
 # Build and push agent Docker image
 build-push-agent:
-	cd ./agents && docker build -t $(IMAGE_REPO):$(IMAGE_TAG) .
-	docker push $(IMAGE_REPO):$(IMAGE_TAG)
+	cd ./agents && docker build -t $(AGENT_IMAGE_REPO):$(IMAGE_TAG) .
+	docker push $(AGENT_IMAGE_REPO):$(IMAGE_TAG)
 
 # Apply Kubernetes manifests (create server Deployment & Service)
 kube-deploy:

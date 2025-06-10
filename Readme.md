@@ -25,7 +25,8 @@ a different Docker image.
 
 `curl "http://localhost:8080/start-job?cmd=echo%20hello%20world%20%3B%20sleep%2010"`
 
-
+[demo](https://asciinema.org/a/U0PnPJZ7RgeRrwzTDptwmJ2aJ)
 # improvements
 - cluster wide RBAC for create job in different namespace
 - usage of base64 encoded command for simply maintaining custom command
+- multi-stage docker build with buildx
