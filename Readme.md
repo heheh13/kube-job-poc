@@ -24,6 +24,9 @@ a different Docker image.
 # Custom command
 
 `curl "http://localhost:8080/start-job?cmd=echo%20hello%20world%20%3B%20sleep%2010"`
+# get job status
+
+`curl 'http://localhost:8080/job-status?id=agent-job-1749664329'`
 
 [demo](https://asciinema.org/a/U0PnPJZ7RgeRrwzTDptwmJ2aJ)
 # improvements
